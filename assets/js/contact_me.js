@@ -8,25 +8,21 @@ $(function() {
         submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var phone = $("input#phone").val();
-            var message = $("textarea#message").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
-            }
-            $.ajax({
-                url: "././mail/contact_me.php",
-                type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
-                cache: false,
+          var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var website = document.getElementById("website").value;
+var message = document.getElementById("comments").value;
+$.ajax({
+url: "https://script.google.com/macros/s/AKfycbwhaGs3wc8tfGIjwMOhPRyBYfgDqb6ygyjdp64vWWyv5Hww1rY/exec",
+type: "GET",
+dataType:"json",
+data: {
+"name": name,
+"email": email,
+"website": website,
+"message": message
+},
+cache: false, 
                 success: function() {
                     // Success message
                     $('#success').html("<div class='alert alert-success'>");
